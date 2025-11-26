@@ -115,11 +115,22 @@
             background-color: #002244;
         }
         
+        /* Hamburger Menu */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 10px;
+        }
+        
         /* Hero Section */
         .hero {
             position: relative;
             height: 500px;
-            background: linear-gradient(rgba(0, 51, 102, 0.7), rgba(0, 51, 102, 0.7)), url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center;
+            background: linear-gradient(rgba(0, 51, 102, 0.7), rgba(0, 51, 102, 0.7)), url('https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center;
             background-size: cover;
             color: white;
             display: flex;
@@ -323,8 +334,20 @@
                 text-align: center;
             }
             
+            .menu-toggle {
+                display: block;
+                position: absolute;
+                top: 15px;
+                right: 20px;
+            }
+            
             .nav-menu {
                 flex-direction: column;
+                display: none;
+            }
+            
+            .nav-menu.active {
+                display: flex;
             }
             
             .hero h2 {
@@ -365,12 +388,16 @@
         <!-- Navigation -->
         <nav>
             <div class="container">
-                <ul class="nav-menu">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-menu" id="navMenu">
                     <li><a href="#inicio">Inicio</a></li>
                     <li><a href="#servicios">Servicios</a></li>
                     <li><a href="#rcv">RCV</a></li>
                     <li><a href="#trimestres">Trimestres</a></li>
                     <li><a href="#articulo58">Artículo 58</a></li>
+                    <li><a href="#generar-ingresos">Generar Ingresos</a></li>
                     <li><a href="#contacto">Contacto</a></li>
                 </ul>
             </div>
@@ -429,6 +456,42 @@
         </div>
     </section>
 
+    <!-- Generate Income Section -->
+    <section class="services" id="generar-ingresos">
+        <div class="container">
+            <h2 class="section-title">Generar Ingresos</h2>
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <p>¿Te gustaría generar ingresos adicionales trabajando con nosotros? Únete a nuestro equipo de colaboradores y ofrece nuestros servicios a tus clientes. Te proporcionamos toda la capacitación y herramientas necesarias para que tengas éxito.</p>
+                <div class="services-grid" style="margin-top: 40px;">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3>Oportunidad de Negocio</h3>
+                        <p>Conviértete en nuestro socio comercial y ofrece nuestros servicios en tu localidad.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Comisiones Atractivas</h3>
+                        <p>Gana comisiones por cada trámite que gestiones con nosotros.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Capacitación Incluida</h3>
+                        <p>Te capacitamos en todos nuestros procesos y te brindamos soporte continuo.</p>
+                    </div>
+                </div>
+                <a href="https://wa.me/5211234567890" class="btn" style="margin-top: 30px;">
+                    <i class="fab fa-whatsapp"></i> Más información por WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- QR Codes Section -->
     <section class="qr-section">
         <div class="container">
@@ -468,6 +531,7 @@
                         <li><a href="#rcv">RCV (Refrendo)</a></li>
                         <li><a href="#trimestres">Trimestres</a></li>
                         <li><a href="#articulo58">Artículo 58</a></li>
+                        <li><a href="#generar-ingresos">Generar Ingresos</a></li>
                         <li><a href="#servicios">Todos los servicios</a></li>
                     </ul>
                 </div>
@@ -486,5 +550,20 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Toggle mobile menu
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('navMenu').classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('navMenu').classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
